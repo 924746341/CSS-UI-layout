@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			html {
+				font-family: sans-serif;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0px;
+			}
+
+			.info_box {
+				width: 450px;
+				height: 400px;
+				position: fixed;
+				top: 0;
+			}
+
+			.fake-content {
+				margin-left: 470px;
+				background-color: #A60000;
+				color: white;
+				padding: 10px;
+				height: 2000px;
+			}
+
+			.info_box ul {
+				padding-left: 0px;
+				margin-top: 0px;
+			}
+
+			.info_box li {
+				float: left;
+				width: 150px;
+				list-style-type: none;
+			}
+
+			.info_box li a {
+				display: inline-block;
+				text-decoration: none;
+				width: 100%;
+				line-height: 3;
+				background-color: red;
+				color: #000000;
+				text-align: center;
+			}
+
+			.info_box li a:hover {
+				background-color: #a60000;
+				color: white;
+			}
+
+			.info_box li a.active {
+				background-color: #a60000;
+				color: white;
+			}
+
+			.info_box .panels {
+				height: 352px;
+				width: 100%;
+				position: relative;
+				clear: both;
+			}
+
+			.info_box article {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 352px;
+				padding: 10px;
+				color: white;
+				width: 100%;
+				background-color: #A60000;
+			}
+
+			.info_box .art_panels {
+				z-index: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="info_box">
+			<ul>
+				<li><a href="#" class="active">Tag1</a></li>
+				<li><a href="#">Tag2</a></li>
+				<li><a href="#">Tag3</a></li>
+			</ul>
+
+			<div class="panels">
+				<article class="art_panels">
+					<h2>The First tab</h2>
+
+					<p>there set some article</p>
+				</article>
+
+				<article>
+					<h2>The seconc tab</h2>
+
+					<p>there also some article</p>
+				</article>
+
+				<article>
+					<h2>The third tab</h2>
+
+					<p>there always have some article</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="fake-content">
+			<h1>Fake content</h1>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+			<p>This is fake content. Your main web page contents would probably go here.</p>
+		</section>
+		<script>
+			let tabs = document.querySelectorAll("li a");
+			let panels = document.querySelectorAll(".info_box article");
+			for (let i = 0; i < tabs.length; i++) {
+				let tab = tabs[i];
+				setHandTab(tab, i);
+			}
+
+			function setHandTab(tab, tabPos) {
+				tab.onclick = function() {
+					for (i = 0; i < tabs.length; i++) {
+						if (tabs[i].getAttribute("class")) {
+							tabs[i].removeAttribute("class");
+							panels[i].removeAttribute("class");
+							panels[tabPos].setAttribute("class", "art_panels");
+						}
+
+						tab.setAttribute("class", "active");
+					}
+
+				}
+			}
+		</script>
+	</body>
+</html>
